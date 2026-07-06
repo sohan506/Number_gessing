@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Guessing Game</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg,#4facfe,#00f2fe);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        margin:0;
+    }
+
+    .container{
+        background:white;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0 10px 20px rgba(0,0,0,0.2);
+        text-align:center;
+        width:350px;
+    }
+
+    h1{
+        color:#333;
+    }
+
+    input{
+        width:80%;
+        padding:10px;
+        font-size:18px;
+        margin:15px 0;
+    }
+
+    button{
+        padding:10px 20px;
+        font-size:18px;
+        border:none;
+        border-radius:8px;
+        background:#007BFF;
+        color:white;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background:#0056b3;
+    }
+
+    #message{
+        margin-top:20px;
+        font-size:20px;
+        font-weight:bold;
+    }
+
+    #attempts{
+        margin-top:10px;
+        color:#555;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>?? Number Guessing Game</h1>
+
+<p>Guess a number between <b>1 and 100</b></p>
+
+<input type="number" id="guess" min="1" max="100">
+
+<br>
+
+<button onclick="checkGuess()">Guess</button>
+
+<p id="message"></p>
+<p id="attempts"></p>
+
+</div>
+
+<script>
+
+// Equivalent to srand(time(0)) + rand()%100+1
+let number = Math.floor(Math.random() * 100) + 1;
+
+let no_of_guesses = 0;
+
+function checkGuess(){
+
+    let guess = Number(document.getElementById("guess").value);
+
+    no_of_guesses++;
+
+    if(guess > number){
+
+        document.getElementById("message").innerHTML =
+        "?? Lower number please!";
+
+    }
+
+    else if(guess < number){
+
+        document.getElementById("message").innerHTML =
+        "?? Higher number please!";
+
+    }
+
+    else{
+
+        document.getElementById("message").innerHTML =
+        "?? Congratulations! You guessed the correct number.";
+
+        document.getElementById("attempts").innerHTML =
+        "You guessed it in " + no_of_guesses + " attempts.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
